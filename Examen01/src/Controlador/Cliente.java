@@ -507,80 +507,178 @@ public class Cliente {
 
     public Object cambiar_objeto(int tipoClase, Object o) {
         Object objeto = null;
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         try {
             switch (tipoClase) {
                 case 0://Usuario
                     Usuario u = (Usuario) o;
                     u.set_Nombre("Cambio de nombre");
-                    u.set_usr(u.get_usr());
-                    u.set_Password(u.get_Passsword());
+                    System.out.println("Escriba el nombre del usuario:");
+                    String nameuser = br.readLine();
+                    System.out.println("\n\nEscriba la contraseña:");
+                    String password = br.readLine();
+                    u.set_usr(nameuser);
+                    u.set_Password(password);
                     u.set_Admin(true);
                     oos.writeObject(u);
 
                     return u;
                 case 1:
+                    System.out.println("Escriba el nombre del usuario:");
+                    int TemCentro= Integer.parseInt(br.readLine());
+                    System.out.println("\n\ntemperatura de charola:");
+                    int TemCharola= Integer.parseInt(br.readLine());
+                    System.out.println("\n\ntemperatura de frigorifico:");
+                    int TemFrigo= Integer.parseInt(br.readLine());
                     Refrigerador refri = (Refrigerador) o;
-                    refri.set_TemCentro(5);
-                    refri.set_TemCharola(5);
-                    refri.set_TemFrigo(0);
+                    refri.set_TemCentro(TemCentro);
+                    refri.set_TemCharola(TemCharola);
+                    refri.set_TemFrigo(TemFrigo);
                    
                     oos.writeObject(refri);
                     return refri;
 
                 case 2:
                     Cortinas cortina = (Cortinas) o;
-                    cortina.set_HoraAper(10, 10);
-                    cortina.set_HoraCierre(10, 10);
-                    cortina.set_PosicionAbierta();//.set_PosicionCerrada,.set_Posicion_Semiabierta,.set_Posicion_Semicerrada
-                    cortina.set_Ubicacion("Nueva Ubicacion");
+                    System.out.println("\n\nHora de apertura \t hora:");
+                    int HoraAper_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraAper_min= Integer.parseInt(br.readLine());
+                    System.out.println("\n\nHora de cierre\t hora:");
+                    int HoraCierre_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraCierre_min= Integer.parseInt(br.readLine());
+                    System.out.println("Posicion de la cortina:");
+                    String posicion = br.readLine();
+                    System.out.println("Ubicacion de la cortina:");
+                    String ubicacion = br.readLine();
+                    
+                    cortina.set_HoraAper(HoraAper_hor, HoraAper_min);
+                    cortina.set_HoraCierre(HoraCierre_hor, HoraCierre_min);                    
+                    cortina.set_Posicion(posicion);
+                    cortina.set_Ubicacion(ubicacion); 
                     
                     oos.writeObject(cortina);
                     return cortina;
                 case 3:
 
                     Termostato termostato = (Termostato) o;
-                    termostato.set_Temperatura(30);
+                    System.out.println("\n\ntemperatura del termostato:");
+                    int Temperatura= Integer.parseInt(br.readLine());
+                    termostato.set_Temperatura(Temperatura);
                     
                     oos.writeObject(termostato);
                     return termostato;
                 case 4:
                     DisMascota dismascota = (DisMascota) o;
-                    dismascota.set_CantCena(200);
-                    dismascota.set_CantCom(300);
-                    dismascota.set_CantDes(400);
-                    dismascota.set_HoraCena(10, 10);
-                    dismascota.set_HoraCom(20, 20);
-                    dismascota.set_HoraDes(30, 30);
+                    System.out.println("\n\ncantidad de alimento en desayuno:");
+                    int CantDes= Integer.parseInt(br.readLine());
+                    System.out.println("\n\ncantidad de alimento en comida:");
+                    int CantCom= Integer.parseInt(br.readLine());
+                    System.out.println("\n\ncantidad de alimento en cena:");
+                    int CantCena= Integer.parseInt(br.readLine());
+                    
+                    System.out.println("\n\nHora de desayuno\t hora:");
+                    int HoraDes_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraDes_min= Integer.parseInt(br.readLine());
+                    System.out.println("\n\nHora de comida\t hora:");
+                    int HoraCom_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraCom_min= Integer.parseInt(br.readLine());
+                    System.out.println("\n\nHora de cena\t hora:");
+                    int HoraCena_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraCena_min= Integer.parseInt(br.readLine());
+                    
+                    dismascota.set_CantCena(CantCena);
+                    dismascota.set_CantCom(CantCom);
+                    dismascota.set_CantDes(CantDes);
+                    dismascota.set_HoraCena(HoraCena_hor, HoraCena_min);
+                    dismascota.set_HoraCom(HoraCom_hor, HoraCom_min);
+                    dismascota.set_HoraDes(HoraDes_hor, HoraDes_min);
                    
                     oos.writeObject(dismascota);
                     return dismascota;
                 case 5:
                     Irrigador irrigador = (Irrigador) o;
-                    irrigador.set_HoraRiego(10, 10);
-                    irrigador.set_TempRiego(10);
+                    System.out.println("\n\nTiempo de riego:");
+                    int TempRiego= Integer.parseInt(br.readLine());
+                    
+                    System.out.println("\n\nHora de riego\t hora:");
+                    int HoraRiego_hor= Integer.parseInt(br.readLine());
+                    System.out.println("\nminutos:");
+                    int HoraRiego_min= Integer.parseInt(br.readLine());
+                    irrigador.set_HoraRiego(HoraRiego_hor, HoraRiego_min);
+                    irrigador.set_TempRiego(TempRiego);
                     
                     oos.writeObject(irrigador);
                     return irrigador;
                 case 6:
                     Alarma alarma = (Alarma) o;
-                    alarma.set_estado(true);
-                    alarma.set_horaInicio(10, 10);
-                    alarma.set_horaTermino(20, 20);
+                    boolean respuestaboolean1=true;
+                    int horaInicio_hor;
+                    int horaInicio_min;
+                    int horaTermino_hor;
+                    int horaTermino_min;
+                    System.out.println("Activar alarma si(1) o no(2):");
+                    int respuesta1= Integer.parseInt(br.readLine());
+                    if(respuesta1==1){
+                        System.out.println("\n\nHora de riego\t hora:");
+                        horaInicio_hor= Integer.parseInt(br.readLine());
+                        System.out.println("\nminutos:");
+                        horaInicio_min= Integer.parseInt(br.readLine());
+                        System.out.println("\n\nHora de riego\t hora:");
+                        horaTermino_hor= Integer.parseInt(br.readLine());
+                        System.out.println("\nminutos:");
+                        horaTermino_min= Integer.parseInt(br.readLine());
+                    }else{
+                        respuestaboolean1=false;
+                        horaInicio_hor=0;
+                        horaInicio_min=0;
+                        horaTermino_hor=0;
+                        horaTermino_min=0;
+                    }
+                    
+                    alarma.set_estado(respuestaboolean1);
+                    alarma.set_horaInicio(horaInicio_hor, horaInicio_min);
+                    alarma.set_horaTermino(horaTermino_hor, horaTermino_min);
 
                     oos.writeObject(alarma);
                     return alarma;
                 case 7:
                     Lampara lampara = (Lampara) o;
-                    lampara.set_Ubicacion(null);
-                    lampara.set_estado(true);
+                    boolean respuestaboolean2=true;
+                    System.out.println("Activar alarma si(1) o no(2):");
+                    int respuesta2= Integer.parseInt(br.readLine());
+                    System.out.println("Ubicacion de la lampara:");
+                    String ubicacionlamp = br.readLine();
+                    if(respuesta2==2){
+                        respuestaboolean2=false;
+                    }
+                    
+                    lampara.set_Ubicacion(ubicacionlamp);
+                    lampara.set_estado(respuestaboolean2);
 
                     oos.writeObject(lampara);
                     return lampara;
                 case 8:
                     Luminaria luminaria = (Luminaria) o;
-                    luminaria.set_Intensidad(luminaria.get_Intensidad());
-                    luminaria.set_Ubicacion("en tu corazon");
-                    luminaria.set_estado(true);
+                    System.out.println("Ubicacion de la luminaria:");
+                    String ubicacionlum = br.readLine();
+                    boolean respuestaboolean3=true;
+                    System.out.println("Activar alarma si(1) o no(2):");
+                    int respuesta3= Integer.parseInt(br.readLine());
+                    if(respuesta3==2){
+                        respuestaboolean3=false;
+                    }
+                    
+                    System.out.println("Intensidad de la luminaria:");
+                    int Intensidad= Integer.parseInt(br.readLine());
+                    
+                    luminaria.set_Intensidad(Intensidad);
+                    luminaria.set_Ubicacion(ubicacionlum);
+                    luminaria.set_estado(respuestaboolean3);
 
                     oos.writeObject(luminaria);
                     return luminaria;
