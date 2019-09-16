@@ -81,10 +81,17 @@ public class Cortinas implements Serializable{
                 break;
         }
     }
+    public void set_Posicion(String posicion){
+        if (posicion=="abierta"){this.posicion=ABIERTA;}
+        else if (posicion=="semiabierta"){this.posicion=SEMIABIERTA;}
+        else if (posicion=="semicerrada"){this.posicion=SEMICERRADA;}
+        else if (posicion=="cerrada"){this.posicion=CERRADA;}
+    }
+    
     public void set_PosicionAbierta(){
         this.posicion=ABIERTA;
     }
-    public void set_PosicionSemicerrada(){
+    /*public void set_PosicionSemicerrada(){
         this.posicion=SEMICERRADA;
     }
     public void set_PosicionSemiabierta(){
@@ -92,7 +99,7 @@ public class Cortinas implements Serializable{
     }
     public void set_PosicionCerrada(){
         this.posicion=CERRADA;
-    }
+    }*/
     
     public Time get_HoraAper(){
       return  this.horaAper.get_Time();
