@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Arrays;
 
 public class Cliente {
 
@@ -110,7 +111,7 @@ public class Cliente {
             System.out.println(administrador);
             lo = (ListaObjetos[]) ois.readObject();
             if (administrador) {
-                lu = (ListaUsuarios) ois.readObject();
+                System.out.println(lu.get_ListaUsuarios());
             }
 
         } catch (EOFException e) {
