@@ -105,12 +105,16 @@ public class Cliente {
             this.set_pwd(Pass);
             u.set_usr(usr);
             u.set_Password(pwd);
+            ///SE ENVIA EL OBJETO USUARIO
             oos.writeObject(u);
             administrador = dis.readBoolean();
             System.out.println(administrador);
-            lo = (ListaObjetos[]) ois.readObject();
+            
+            lo = (ListaObjetos[]) ois.readObject();////////recibe la lista de objetos
+            System.out.println(Arrays.toString(lo));
             if (administrador) {
-                lu = (ListaUsuarios) ois.readObject();
+                lu = (ListaUsuarios) ois.readObject();////////recibe la lista de usuarios
+                System.out.println(Arrays.toString(lo));
             }
 
         } catch (EOFException e) {
